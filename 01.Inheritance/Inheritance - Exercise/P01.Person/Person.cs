@@ -6,6 +6,7 @@ namespace Person
     public class Person
     {
         private int age;
+
         public Person(string name, int age)
         {
             Name = name;
@@ -15,7 +16,7 @@ namespace Person
         public string Name { get; set; }
 
         public virtual int Age
-        { 
+        {
             get
             {
                 return age;
@@ -24,7 +25,7 @@ namespace Person
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("A person age can't be negative.");
+                    throw new ArgumentException("Age cannot be negative.");
                 }
 
                 age = value;
@@ -32,6 +33,11 @@ namespace Person
         }
 
         public override string ToString()
-        =>$"Name: {Name}, Age: {Age}";
+        {
+            //return $"Name: {Name}, Age: {Age}";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Name: {Name}, Age: {Age}");
+            return sb.ToString( );
+        }
     }
 }
