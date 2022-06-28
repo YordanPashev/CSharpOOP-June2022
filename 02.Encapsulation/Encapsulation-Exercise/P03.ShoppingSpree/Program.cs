@@ -68,7 +68,7 @@ namespace ShoppingSpree
 
             foreach (Person person in people)
             {
-                if (person.bag.Count == 0)
+                if (person.bagOfProducts.Count == 0)
                 {
                     Console.WriteLine($"{person.Name} - Nothing bought ");
                 }

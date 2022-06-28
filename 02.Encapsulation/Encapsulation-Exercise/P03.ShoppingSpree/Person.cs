@@ -45,7 +45,7 @@ namespace ShoppingSpree
             }
         }
 
-        public IReadOnlyCollection<Product> bag
+        public IReadOnlyCollection<Product> BagOfProducts
         {
             get => bagOfProducts.AsReadOnly();
         }
