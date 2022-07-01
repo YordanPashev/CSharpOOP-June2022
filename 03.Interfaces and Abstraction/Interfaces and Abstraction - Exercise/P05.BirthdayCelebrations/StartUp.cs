@@ -1,5 +1,4 @@
 ﻿using BirthdayCelebrations.Core;
-using System;
 
 namespace BirthdayCelebrations
 {

@@ -1,6 +1,4 @@
-﻿
-
-namespace BirthdayCelebrations.Contracts
+﻿namespace BirthdayCelebrations.Contracts
 {
     public interface IBirthable
     {
