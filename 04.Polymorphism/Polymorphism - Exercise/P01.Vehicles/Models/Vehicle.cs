@@ -18,10 +18,23 @@ namespace Vehicles
 
         public double ConsumptionPerKm { get; protected set; }
 
+        public double AirConditionalConsumption { get; set; }
+
+        public void Drive(double distance)
+        {
+            double neededFuel = (distance * this.ConsumptionPerKm) + (distance * AirConditionalConsumption);
+            if (neededFuel <= FuelQuantity)
+            {
+                FuelQuantity -= neededFuel;
+                Console.WriteLine(GetType().Name + $" travelled {distance} km");
+                return;
+            }
+
+            Console.WriteLine(GetType().Name + " needs refueling");
+        }
+
         public virtual void Refuel(double fuelAmount)
            => this.FuelQuantity += fuelAmount;
-
-        public abstract void Drive(double distance);
 
         public override string ToString()
             => GetType().Name + $": {this.FuelQuantity:F2}";
