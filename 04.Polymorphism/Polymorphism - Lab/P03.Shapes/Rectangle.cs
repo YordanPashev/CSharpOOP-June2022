@@ -25,11 +25,7 @@ namespace Shapes
         public override double CalculatePerimeter()
             =>  (2 * Width) + (2 * Height);
 
-
-
         public override string Draw()
-        {
-            return base.Draw() + GetType().Name;
-        }
+            => base.Draw() + GetType().Name;
     }
 }

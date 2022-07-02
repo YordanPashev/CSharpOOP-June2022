@@ -22,8 +22,6 @@ namespace Shapes
             => 2 * Math.PI* radius;
 
         public override string Draw()
-        {
-            return base.Draw() + GetType().Name;
-        }
+           => base.Draw() + GetType().Name;
     }
 }
