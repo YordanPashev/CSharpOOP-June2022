@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using Vehicles.Models;
+using System.Collections.Generic;
 
 namespace Vehicles.Core
 {
     public class Engine : IEngine
     {
-
         public void Run()
         {
             string[] carInfo = Console.ReadLine()
