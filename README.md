@@ -1,4 +1,4 @@
-Contents
+CONTENTS
 
 [**1. Inheritance**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/01.Inheritance)
 
