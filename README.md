@@ -8,4 +8,7 @@
 
 [**4. Polymorphism**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/04.Polymorphism)
 
+[**5. Pxceptions and Error Handling**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/05.Exceptions%20and%20Error%20Handling)
+
+
 
