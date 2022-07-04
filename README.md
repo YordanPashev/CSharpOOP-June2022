@@ -1,4 +1,4 @@
-C# OOP - June 2022
+Contents
 
 [**1. Inheritance**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/01.Inheritance)
 
