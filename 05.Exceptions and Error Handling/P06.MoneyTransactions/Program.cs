@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace P06.MonayTranslation
+namespace P06.MoneyTransactions
 {
     internal class Program
     {
