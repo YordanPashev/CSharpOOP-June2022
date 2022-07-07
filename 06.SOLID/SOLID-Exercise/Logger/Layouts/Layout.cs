@@ -2,11 +2,9 @@
 {
     public abstract class Layout : ILayout
     {
-        protected Layout(string format)
-        {
-            Format = format;
-        }
-
+        protected Layout(string format) 
+            => Format = format;
+        
         public string Format { get;  }
     }
 }
