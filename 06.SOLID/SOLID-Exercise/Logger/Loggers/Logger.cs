@@ -16,9 +16,7 @@ namespace SolidExerciseLogger.Loggers
 
         public void Error(string message) { }
 
-
         public void Info(string message) { }
-
 
         public void Warning(string message)
           => Log(ReportLevel.Warning, message);
@@ -28,7 +26,6 @@ namespace SolidExerciseLogger.Loggers
 
          public void Fatal(string message)
             => Log(ReportLevel.Fatal, message);
-
 
         private void Log(ReportLevel reportLevel, string message)
         {
