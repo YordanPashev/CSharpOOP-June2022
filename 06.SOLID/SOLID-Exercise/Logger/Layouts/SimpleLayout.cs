@@ -6,10 +6,7 @@ namespace SolidExerciseLogger.Layouts
     {
         private const string SimpleLayoutFormat = "{0} - {1} - {2}";
 
-        public SimpleLayout() 
-            : base(SimpleLayoutFormat) 
-        {
-            
-        }
+        public SimpleLayout()
+            : base(SimpleLayoutFormat) { }
     }
 }

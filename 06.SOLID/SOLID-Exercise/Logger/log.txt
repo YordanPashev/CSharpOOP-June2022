@@ -1,9 +1,5 @@
-7/7/2022 3:57:39 PM - Error - Error parsing JSON.
-7/7/2022 3:57:39 PM - Info - User Pesho successfully registered.
-7/7/2022 5:13:28 PM - Error - Error parsing JSON.
-7/7/2022 5:13:28 PM - Info - User Pesho successfully registered.
-<log>
-   <date>7/7/2022 5:43:20 PM</date>
-   <level>Fatal</level> 
-   <message>mscorlib.dll does not respond</message> 
-</log>
+3/26/2015 2:08:11 PM - INFO - Everything seems fine
+3/26/2015 2:22:13 PM - WARNING - Warning: ping is too high - disconnect imminent
+3/26/2015 2:32:44 PM - ERROR - Error parsing request
+3/26/2015 2:38:01 PM - CRITICAL - No connection string found in App.config
+3/26/2015 2:39:19 PM - FATAL - mscorlib.dll does not respond

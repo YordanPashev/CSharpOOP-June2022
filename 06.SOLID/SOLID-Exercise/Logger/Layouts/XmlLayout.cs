@@ -11,9 +11,6 @@ namespace SolidExerciseLogger.Layouts
                                                 $"</log>";
 
         public XmlLayout()
-            : base(xmlLayoutFormat)
-        {
-
-        }
+            : base(xmlLayoutFormat) { }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SolidExerciseLogger.Appenders;
+using SolidExerciseLogger.ReportLevels;
 
 namespace SolidExerciseLogger.Loggers
 
@@ -7,14 +8,6 @@ namespace SolidExerciseLogger.Loggers
     {
         IAppender[] Appenders { get; }
 
-        void Info(string message);
-
-        void Error(string message);
-
-        void Warning(string message);
-
-        void Critical(string message);
-
-        void Fatal(string message); 
+        void TryToAppendLog(ReportLevel reportLevel, string dateTime, string message); 
     }
 }

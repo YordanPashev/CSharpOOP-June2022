@@ -11,6 +11,8 @@ namespace SolidExerciseLogger.Appenders
 
         public ReportLevel ReportLevel { get; set; }
 
-        void Append(DateTime dateTime, ReportLevel reportLevel, string message);
+        public int Count { get; set; }
+
+        void Append(string dateTime, ReportLevel reportLevel, string message);
     }
 }

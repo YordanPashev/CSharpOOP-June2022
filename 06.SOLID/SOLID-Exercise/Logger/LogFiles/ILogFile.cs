@@ -4,6 +4,6 @@
     {
         void Write(string message);
 
-        int Size { get;  }
+        int Size { get; }
     }
 }
