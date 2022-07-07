@@ -1,0 +1,4 @@
+7/7/2022 3:57:39 PM - Error - Error parsing JSON.
+7/7/2022 3:57:39 PM - Info - User Pesho successfully registered.
+7/7/2022 5:13:28 PM - Error - Error parsing JSON.
+7/7/2022 5:13:28 PM - Info - User Pesho successfully registered.
