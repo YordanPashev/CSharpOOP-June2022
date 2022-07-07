@@ -13,9 +13,12 @@ namespace SolidExerciseLogger
         {
             var simpleLayout = new SimpleLayout();
             var consoleAppender = new ConsoleAppender(simpleLayout);
+            var xmlLayout = new XmlLayout();
+            var file = new LogFile();
+            var fileAppender = new FileAppender(xmlLayout, file);
             consoleAppender.ReportLevel = ReportLevel.Error;
-
-            var logger = new Logger(consoleAppender);
+            fileAppender.ReportLevel = ReportLevel.Fatal;
+            var logger = new Logger(consoleAppender, fileAppender);
 
             logger.Info("Everything seems fine");
             logger.Warning("Warning: ping is too high - disconnect imminent");
