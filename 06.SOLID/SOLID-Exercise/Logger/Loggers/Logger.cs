@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using SolidExerciseLogger.Appenders;
 using SolidExerciseLogger.ReportLevels;
 
@@ -12,14 +11,14 @@ namespace SolidExerciseLogger.Loggers
 
         public IAppender[] Appenders { get; }
 
-        public void TryToAppendLog(ReportLevel reportLevel, string dateTime, string message)
+        public void TryToAppendMessage(ReportLevel reportLevel, DateTime dateTime, string message)
         {
             foreach (IAppender appender in Appenders)
             {
                 if (reportLevel >= appender.ReportLevel)
                 {
                     appender.Append(dateTime, reportLevel, message);
-                    appender.Count++;
+                    appender.AppendedMessagesCount++;
                 }
             }
         }

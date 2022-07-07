@@ -10,7 +10,6 @@ namespace SolidExerciseLogger.Layouts
                                                 "   <message>{2}</message> " + Environment.NewLine +
                                                 $"</log>";
 
-        public XmlLayout()
-            : base(xmlLayoutFormat) { }
+        public XmlLayout() : base(xmlLayoutFormat) { }
     }
 }

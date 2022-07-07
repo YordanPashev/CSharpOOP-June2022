@@ -2,7 +2,6 @@
 using SolidExerciseLogger.ReportLevels;
 using SolidExerciseLogger.Layouts;
 
-
 namespace SolidExerciseLogger.Appenders
 {
     public interface IAppender
@@ -11,8 +10,8 @@ namespace SolidExerciseLogger.Appenders
 
         public ReportLevel ReportLevel { get; set; }
 
-        public int Count { get; set; }
+        public int AppendedMessagesCount { get; set; }
 
-        void Append(string dateTime, ReportLevel reportLevel, string message);
+        void Append(DateTime dateTime, ReportLevel reportLevel, string message);
     }
 }

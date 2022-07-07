@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using SolidExerciseLogger.Appenders;
 using SolidExerciseLogger.Layouts;
 using SolidExerciseLogger.LogFiles;
 using SolidExerciseLogger.Loggers;
 using SolidExerciseLogger.ReportLevels;
-using System.Collections.Generic;
 
 namespace SolidExerciseLogger.Core
 {
@@ -69,8 +69,7 @@ namespace SolidExerciseLogger.Core
             if (appenderInfo.Length == 3)
             {
                 string reportLevelString = appenderInfo[2];
-                Enum.TryParse(reportLevelString, out ReportLevel reportLevel);
-                return reportLevel;
+                return (ReportLevel)Enum.Parse(typeof(ReportLevel), reportLevelString, true);   
             }
 
             return ReportLevel.INFO;
@@ -88,8 +87,7 @@ namespace SolidExerciseLogger.Core
 
             else if (appenderType == "FileAppender")
             {
-                ILogFile file = new LogFile();
-                appender = new FileAppender(xmlLayout, file);
+                appender = new FileAppender(xmlLayout, new LogFile());
             }
 
             appender.ReportLevel = reportLevel;
@@ -119,14 +117,14 @@ namespace SolidExerciseLogger.Core
         private void CreateLog(string[] cmdArgs)
         {
             string reportLevelString = cmdArgs[0];
-            string dateTime = cmdArgs[1];
+            DateTime dateTime = DateTime.Parse(cmdArgs[1]);
             string message = cmdArgs[2];
-            Enum.TryParse(reportLevelString, out ReportLevel reportLevel);
+            ReportLevel reportLevel = (ReportLevel)Enum.Parse(typeof(ReportLevel), reportLevelString, true);
 
             foreach (var appender in appenders)
             {
                 ILogger log = new Logger(appender);
-                log.TryToAppendLog(reportLevel, dateTime, message);
+               log.TryToAppendMessage(reportLevel, dateTime, message);
             }
         }
 

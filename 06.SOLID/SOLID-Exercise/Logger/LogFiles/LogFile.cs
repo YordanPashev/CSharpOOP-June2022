@@ -13,7 +13,6 @@ namespace SolidExerciseLogger.LogFiles
         public int Size 
             => sb.ToString().Where(char.IsLetter).Sum(x => x);
 
-
         public void Write(string message)
             =>this.sb.AppendLine(message);
 
