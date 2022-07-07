@@ -10,5 +10,8 @@
 
 [**5. Exceptions and Error Handling**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/05.Exceptions%20Handling)
 
+[**6. SOLID**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/06.SOLID)
+
+
 
 
