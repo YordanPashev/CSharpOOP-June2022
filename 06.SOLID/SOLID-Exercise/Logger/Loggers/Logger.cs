@@ -7,7 +7,7 @@ namespace SolidExerciseLogger.Loggers
     public class Logger : ILogger
     {
         public Logger(params IAppender[] appenders) 
-            =>this.Appenders = appenders;
+            => this.Appenders = appenders;
 
         public IAppender[] Appenders { get; }
 

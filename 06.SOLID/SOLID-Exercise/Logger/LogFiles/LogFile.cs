@@ -14,7 +14,7 @@ namespace SolidExerciseLogger.LogFiles
             => sb.ToString().Where(char.IsLetter).Sum(x => x);
 
         public void Write(string message)
-            =>this.sb.AppendLine(message);
+            => this.sb.AppendLine(message);
 
         public override string ToString()
             => $"{this.Size}";

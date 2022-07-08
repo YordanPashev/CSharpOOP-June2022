@@ -22,22 +22,23 @@ namespace SolidExerciseLogger.Core
         {
             int numberOfAppenders = int.Parse(Console.ReadLine());
 
-            GetAllAppenders(numberOfAppenders);
+            appenders = GetAllAppenders(numberOfAppenders);
 
-            string cmd = string.Empty;
-            while ((cmd = Console.ReadLine()) != "END")
+            string message = string.Empty;
+            while ((message = Console.ReadLine()) != "END")
             {
-                string[] cmdArgs = cmd
+                string[] cmdArgs = message
                     .Split('|', StringSplitOptions.RemoveEmptyEntries);
 
-                CreateLog(cmdArgs);
+                ProcessMessage(cmdArgs);
             }
 
             DisplayLoggerInfo(appenders);
         }
 
-        private void GetAllAppenders(int numberOfAppenders)
+        private List<IAppender> GetAllAppenders(int numberOfAppenders)
         {
+            List<IAppender> appenders = new List<IAppender>();
             for (int i = 0; i < numberOfAppenders; i++)
             {
                 string[] appenderInfo = Console.ReadLine()
@@ -62,6 +63,8 @@ namespace SolidExerciseLogger.Core
 
                 appenders.Add(appender);
             }
+
+            return appenders;
         }
 
         private ReportLevel GetReportLevel(string[] appenderInfo)
@@ -114,7 +117,7 @@ namespace SolidExerciseLogger.Core
             return appender;
         }
 
-        private void CreateLog(string[] cmdArgs)
+        private void ProcessMessage(string[] cmdArgs)
         {
             string reportLevelString = cmdArgs[0];
             DateTime dateTime = DateTime.Parse(cmdArgs[1]);
@@ -124,7 +127,7 @@ namespace SolidExerciseLogger.Core
             foreach (var appender in appenders)
             {
                 ILogger log = new Logger(appender);
-               log.TryToAppendMessage(reportLevel, dateTime, message);
+                log.TryToAppendMessage(reportLevel, dateTime, message);
             }
         }
 
