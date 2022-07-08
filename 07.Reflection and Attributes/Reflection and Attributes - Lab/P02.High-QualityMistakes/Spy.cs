@@ -21,12 +21,12 @@ namespace Stealer
                 result.AppendLine($"{field.Name} must be private!");
             }
 
-            foreach (MethodInfo method in publicMethods.Where(m => m.Name.StartsWith("get")))
+            foreach (MethodInfo method in publicMethods.Where(m => m.Name.StartsWith("set")))
             {
                 result.AppendLine($"{method.Name} have to be public!");
             }
 
-            foreach (MethodInfo method in nonPublicMethods.Where(m => m.Name.StartsWith("set")))
+            foreach (MethodInfo method in nonPublicMethods.Where(m => m.Name.StartsWith("get")))
             {
                 result.AppendLine($"{method.Name} have to be private!");
             }
