@@ -14,7 +14,7 @@ namespace Stealer
             var instance = Activator.CreateInstance(nameOfTheClass);
             FieldInfo[] fields = instance.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.Static);
             MethodInfo[] publicMethods = instance.GetType().GetMethods(BindingFlags.Instance | BindingFlags.Public);
-            MethodInfo[] NonPublicMethods = instance.GetType().GetMethods(BindingFlags.Instance | BindingFlags.NonPublic);
+            MethodInfo[] nonPublicMethods = instance.GetType().GetMethods(BindingFlags.Instance | BindingFlags.NonPublic);
 
             foreach (FieldInfo field in fields)
             {
@@ -26,7 +26,7 @@ namespace Stealer
                 result.AppendLine($"{method.Name} have to be public!");
             }
 
-            foreach (MethodInfo method in publicMethods.Where(m => m.Name.StartsWith("set")))
+            foreach (MethodInfo method in nonPublicMethods.Where(m => m.Name.StartsWith("set")))
             {
                 result.AppendLine($"{method.Name} have to be private!");
             }
