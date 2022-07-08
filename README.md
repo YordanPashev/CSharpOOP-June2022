@@ -12,6 +12,9 @@
 
 [**6. SOLID**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/06.SOLID)
 
+[**7. Reflection and Attributes**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/07.Reflection%20and%20Attributes)
+
+
 
 
 
