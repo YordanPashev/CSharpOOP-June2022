@@ -12,7 +12,7 @@ namespace CommandPattern.Models
         {
             string[] input = args.Split(' ');
             string cmd = input[0];
-            string[] value = input[1..];
+            string[] value = input.Skip(1).ToArray();
 
             Type commandType = Assembly
                  .GetCallingAssembly()
@@ -23,11 +23,12 @@ namespace CommandPattern.Models
             {
                 throw new InvalidOperationException("Invalid command type");
             }
+
             ICommand command = (ICommand)Activator.CreateInstance(commandType);
             string result = command.Execute(value);
             return result;
 
-            //Solution with Reflection:
+            //Alternative Solution with Reflection:
             //Type type = Type.GetType("CommandPattern.Commands." + cmd + "Command");
             //ICommand command = Activator.CreateInstance(type) as ICommand;
             //string result = command.Execute(value);
