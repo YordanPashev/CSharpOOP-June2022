@@ -4,12 +4,12 @@
     {
         public Person(string name, int age)
         {
-            this.name = name;
-            Age = age;
+            this.Name = name;
+            this.Age = age;
         }
 
         [MyRequired]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         [MyRange(12,90)]
         public int Age { get; set; }
