@@ -20,8 +20,7 @@ namespace Database.Tests
         {
             Assert.Throws<InvalidOperationException>(()
                 => database = new Database(new int[17]),
-                "You try to add less than 17 elements."
-                );
+                "You try to add less than 17 elements.");
         }
 
         [Test]
