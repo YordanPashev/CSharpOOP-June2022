@@ -148,7 +148,7 @@
 
             Assert.That(defender.HP == 0,
                        "The Fight method does not execute Attack method." +
-                       "Expected result [HP of the deffender must be 0.]");
+                       "Expected result [HP of the defender must be 0.]");
         }
     }
 }
