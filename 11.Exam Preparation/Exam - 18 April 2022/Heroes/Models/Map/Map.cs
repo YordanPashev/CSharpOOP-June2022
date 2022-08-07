@@ -63,7 +63,7 @@ namespace Heroes.Models.Map
 
                 if (!knights.Any(b => b.IsAlive))
                 {
-                    result = $"The barbarians took { barbarians.Where(k => !k.IsAlive).Count() } casualties but won the battle.";
+                    result = $"The barbarians took { barbarians.Where(b => !b.IsAlive).Count() } casualties but won the battle.";
                     isFightOver = true;
                     break;
                 }
