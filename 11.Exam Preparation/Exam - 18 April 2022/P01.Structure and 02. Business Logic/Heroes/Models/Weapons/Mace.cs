@@ -1,21 +1,22 @@
 ﻿namespace Heroes.Models.Weapons
 {
-    internal class Claymore : Weapon
+    public class Mace : Weapon
     {
-        private const int damage = 20;
+        private const int damage = 25;
 
-        public Claymore(string name, int durability)
+        public Mace(string name, int durability)
             : base(name, durability) { }
+
 
         public override int DoDamage()
         {
-
-            this.Durability--;
-
             if (this.Durability <= 0)
             {
+                this.Durability = 0;
                 return 0;
             }
+
+            this.Durability--;
 
             return damage;
         }

@@ -83,15 +83,18 @@ namespace Heroes.Models.Heroes
         {
             if (this.Armour - points <= 0)
             {
-                this.Armour = 0;
                 int attackPointLeft = points - this.Armour;
+                this.Armour = 0;
 
                 if (this.Health - attackPointLeft <= 0)
                 {
-                    this.Health = 0;
+                    this.Health = 0; 
                 }
 
-                this.Health -= attackPointLeft;
+                else
+                {
+                    this.Health -= attackPointLeft;
+                }
             }
 
             else

@@ -10,6 +10,6 @@
 
         string StartBattle();
 
-        string HeroReport();       
+        string HeroReport();
     }
 }

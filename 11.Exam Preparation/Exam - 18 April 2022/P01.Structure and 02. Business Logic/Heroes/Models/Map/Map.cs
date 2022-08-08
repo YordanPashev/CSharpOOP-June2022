@@ -41,30 +41,40 @@ namespace Heroes.Models.Map
                     {
                         int dmg = knight.Weapon.DoDamage();
                         barbarian.TakeDamage(dmg);
+
+                        if (!barbarians.Any(b => b.IsAlive))
+                        {
+                            result = $"The knights took { knights.Where(k => !k.IsAlive).Count() } casualties but won the battle.";
+                            isFightOver = true;
+                            break;
+                        }
                     }
                 }
 
-                if (!barbarians.Any(b => b.IsAlive))
+                if (isFightOver)
                 {
-                    result = $"The knights took { knights.Where(k => !k.IsAlive).Count() } casualties but won the battle.";
-                    isFightOver = true;
                     break;
                 }
 
-                foreach (Barbarian barbarian in barbarians.Where(k => k.IsAlive))
+                foreach (Barbarian barbarian in barbarians.Where(b => b.IsAlive))
                 {
 
-                    foreach (Knight knight in knights.Where(b => b.IsAlive))
+                    foreach (Knight knight in knights.Where(k => k.IsAlive))
                     {
                         int dmg = barbarian.Weapon.DoDamage();
                         knight.TakeDamage(dmg);
+
+                        if (!knights.Any(b => b.IsAlive))
+                        {
+                            result = $"The barbarians took { barbarians.Where(b => !b.IsAlive).Count() } casualties but won the battle.";
+                            isFightOver = true;
+                            break;
+                        }
                     }
                 }
 
-                if (!knights.Any(b => b.IsAlive))
+                if (isFightOver)
                 {
-                    result = $"The barbarians took { barbarians.Where(b => !b.IsAlive).Count() } casualties but won the battle.";
-                    isFightOver = true;
                     break;
                 }
             }
