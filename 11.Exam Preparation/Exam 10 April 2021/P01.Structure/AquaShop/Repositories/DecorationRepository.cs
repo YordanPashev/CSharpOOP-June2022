@@ -1,10 +1,10 @@
 ﻿namespace AquaShop.Repositories
 {
     using System.Linq;
-
-    using AquaShop.Models.Decorations.Contracts;
-    using AquaShop.Repositories.Contracts;
     using System.Collections.Generic;
+
+    using AquaShop.Repositories.Contracts;
+    using AquaShop.Models.Decorations.Contracts;
 
     public class DecorationRepository : IRepository<IDecoration>
     {
