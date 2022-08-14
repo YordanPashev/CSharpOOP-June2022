@@ -3,17 +3,17 @@
     using System;
     using System.Linq;
     using System.Text;
+    using System.Collections.Generic;
 
     using SpaceStation.Repositories;
+    using SpaceStation.Models.Mission;
     using SpaceStation.Core.Contracts;
     using SpaceStation.Models.Planets;
     using SpaceStation.Models.Astronauts;
     using SpaceStation.Utilities.Messages;
-    using SpaceStation.Models.Astronauts.Contracts;
     using SpaceStation.Repositories.Contracts;
     using SpaceStation.Models.Planets.Contracts;
-    using SpaceStation.Models.Mission;
-    using System.Collections.Generic;
+    using SpaceStation.Models.Astronauts.Contracts;
 
     public class Controller : IController
     {
@@ -26,6 +26,7 @@
             astronauts = new AstronautRepository();
             planets = new PlanetRepository();
         }
+
         public string AddAstronaut(string type, string astronautName)
         {
             IAstronaut astronaut = type switch
@@ -37,6 +38,7 @@
             };
 
             astronauts.Add(astronaut);
+
             return string.Format(OutputMessages.AstronautAdded, astronaut.GetType().Name, astronaut.Name);
         }
 
@@ -68,7 +70,6 @@
             Mission mission = new Mission();
 
             mission.Explore(planetForExplore, suitableAstrountsForMission);
-
             exploredPlanets++;
             int deadAstrunautCount = astronautForMissionCount - suitableAstrountsForMission.Count();
 

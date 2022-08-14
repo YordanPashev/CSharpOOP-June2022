@@ -1,17 +1,19 @@
 ﻿namespace PlanetWars.Core
 {
-    using PlanetWars.Repositories;
-    using PlanetWars.Core.Contracts;
-    using PlanetWars.Models.Planets.Contracts;
-    using PlanetWars.Utilities.Messages;
-    using PlanetWars.Models.Planets;
-    using PlanetWars.Models.MilitaryUnits.Contracts;
-    using PlanetWars.Models.MilitaryUnits;
+
     using System;
     using System.Linq;
-    using PlanetWars.Models.Weapons.Contracts;
-    using PlanetWars.Models.Weapons;
     using System.Text;
+
+    using PlanetWars.Repositories;
+    using PlanetWars.Core.Contracts;
+    using PlanetWars.Models.Planets;
+    using PlanetWars.Models.Weapons;
+    using PlanetWars.Utilities.Messages;
+    using PlanetWars.Models.MilitaryUnits;
+    using PlanetWars.Models.Planets.Contracts;
+    using PlanetWars.Models.Weapons.Contracts;
+    using PlanetWars.Models.MilitaryUnits.Contracts;
 
     public class Controller : IController
     {
@@ -44,7 +46,6 @@
             };
 
             planet.Spend(unit.Cost);
-
             planet.AddUnit(unit);
 
             return string.Format(OutputMessages.UnitAdded, unitTypeName, planetName);
@@ -73,7 +74,6 @@
             };
 
             planet.Spend(weapon.Price);
-
             planet.AddWeapon(weapon);
 
             return string.Format(OutputMessages.WeaponAdded, planetName, weaponTypeName);
@@ -145,7 +145,6 @@
                     return string.Format(OutputMessages.WinnigTheWar, winner, loser);
                 }
 
-
                 else
                 {
                     attacker.Spend(attacker.Budget / 2);
@@ -162,7 +161,6 @@
                 attacker.Profit(defender.Army.Sum(u => u.Cost) + defender.Weapons.Sum(w => w.Price));
 
                 planets.RemoveItem(defender.Name);
-
 
                 winner = attacker.Name;
                 loser = defender.Name;
