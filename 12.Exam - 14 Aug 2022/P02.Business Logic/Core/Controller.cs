@@ -26,11 +26,7 @@
 
         public string AddUnit(string unitTypeName, string planetName)
         {
-            IPlanet planet = planets.FindByName(planetName);
-            if (planet == null)
-            {
-                throw new InvalidOperationException(string.Format(ExceptionMessages.UnexistingPlanet, planetName));
-            }
+            IPlanet planet = GetPlanet(planetName);
 
             if (planet.Army.Any(u => u.GetType().Name == unitTypeName))
             {
@@ -53,12 +49,7 @@
 
         public string AddWeapon(string planetName, string weaponTypeName, int destructionLevel)
         {
-            IPlanet planet = planets.FindByName(planetName);
-
-            if (planet == null)
-            {
-                throw new InvalidOperationException(string.Format(ExceptionMessages.UnexistingPlanet, planetName));
-            }
+            IPlanet planet = GetPlanet(planetName);
 
             if (planet.Weapons.Any(w => w.GetType().Name == weaponTypeName))
             {
@@ -108,8 +99,8 @@
 
         public string SpaceCombat(string planetOne, string planetTwo)
         {
-            IPlanet attacker = planets.FindByName(planetOne);
-            IPlanet defender = planets.FindByName(planetTwo);
+            IPlanet attacker = GetPlanet(planetOne);
+            IPlanet defender = GetPlanet(planetTwo);
 
             IPlanet winner = null;
             IPlanet looser = null;
@@ -162,11 +153,7 @@
 
         public string SpecializeForces(string planetName)
         {
-            IPlanet planet = planets.FindByName(planetName);
-            if (planet == null)
-            {
-                throw new InvalidOperationException(string.Format(ExceptionMessages.UnexistingPlanet, planetName));
-            }
+            IPlanet planet = GetPlanet(planetName);
 
             if (!planet.Army.Any())
             {
@@ -179,5 +166,16 @@
 
             return string.Format(OutputMessages.ForcesUpgraded, planetName);
         }
-    }
+
+        private IPlanet GetPlanet(string planetName)
+        {
+            IPlanet planet = planets.FindByName(planetName);
+            if (planet == null)
+            {
+                throw new InvalidOperationException(string.Format(ExceptionMessages.UnexistingPlanet, planetName));
+            }
+
+            return planet;
+        }
+    } 
 }
