@@ -53,7 +53,8 @@ namespace INStock.Tests
             Product productOne = new Product(label, price, quantity);
             Product productTwo = new Product(label, price, quantity);
 
-            Assert.That(productOne.CompareTo(productTwo) == 0);
+            Assert.That(productOne.CompareTo(productTwo) == 0,
+                       "Must return true because the two products are equal.");
         }
 
         [TestCase("Blizalka", 0, 1)]
@@ -62,7 +63,8 @@ namespace INStock.Tests
             Product productOne = new Product(label, price, quantity);
             Product productTwo = new Product("Mekichki", 1.50m, 1);
 
-            Assert.That(productOne.CompareTo(productTwo) != 0);
+            Assert.That(productOne.CompareTo(productTwo) != 0,
+                       "Must return false because the two products are not equal."););
         }
     }
 }
