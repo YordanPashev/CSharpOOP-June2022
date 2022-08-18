@@ -32,22 +32,16 @@
         public bool RemoveItem(string name)
         {
             bool result = this.RemoveItem(name);
-
             StringBuilder heroesDatabase = new StringBuilder();
             
             foreach (var hero in models)
-            {
-                if (hero.Name == name)
-                {
-                    continue;
-                }
+            
                 heroesDatabase.AppendLine(hero.ToString().TrimEnd());
-
             }
+            
             File.WriteAllText(@"C:\Users\pashe\source\repos\Heroes\Heroes\heroesDatabase.txt", heroesDatabase.ToString().TrimEnd());  
 
             return result;
         }
-
     }
 }
