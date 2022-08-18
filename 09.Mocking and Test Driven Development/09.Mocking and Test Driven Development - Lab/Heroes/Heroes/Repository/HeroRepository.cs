@@ -14,10 +14,7 @@
     {
         private HashSet<IHero> models;
 
-        public HeroRepository()
-        {
-            models = new HashSet<IHero>();
-        }
+        public HeroRepository() => models = new HashSet<IHero>();
 
         public IReadOnlyCollection<IHero> Models => this.models;
 
