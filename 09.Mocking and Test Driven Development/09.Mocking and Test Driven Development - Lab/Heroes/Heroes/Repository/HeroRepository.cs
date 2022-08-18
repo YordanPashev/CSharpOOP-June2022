@@ -31,19 +31,22 @@
 
         public bool RemoveItem(string name)
         {
-            StringBuilder result = new StringBuilder();
+            bool result = this.RemoveItem(name);
+
+            StringBuilder heroesDatabase = new StringBuilder();
+            
             foreach (var hero in models)
             {
                 if (hero.Name == name)
                 {
                     continue;
                 }
-                result.AppendLine(hero.ToString().TrimEnd());
+                heroesDatabase.AppendLine(hero.ToString().TrimEnd());
 
             }
-            File.WriteAllText(@"C:\Users\pashe\source\repos\Heroes\Heroes\heroesDatabase.txt", result.ToString().TrimEnd());  
+            File.WriteAllText(@"C:\Users\pashe\source\repos\Heroes\Heroes\heroesDatabase.txt", heroesDatabase.ToString().TrimEnd());  
 
-            return this.RemoveItem(name);
+            return result;
         }
 
     }
