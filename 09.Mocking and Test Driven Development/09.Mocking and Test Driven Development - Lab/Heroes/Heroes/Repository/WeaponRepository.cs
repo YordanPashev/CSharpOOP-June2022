@@ -10,10 +10,7 @@
     {
         private HashSet<IWeapon> models;
 
-        public WeaponRepository()
-        {
-            models = new HashSet<IWeapon>();
-        }
+        public WeaponRepository() => models = new HashSet<IWeapon>();
 
         public IReadOnlyCollection<IWeapon> Models => this.models;
 
