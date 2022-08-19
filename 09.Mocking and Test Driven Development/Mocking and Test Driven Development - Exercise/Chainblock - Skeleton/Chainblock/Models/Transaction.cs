@@ -1,7 +1,8 @@
-﻿namespace Chainblock.Contracts.Models
+﻿namespace Chainblock.Models
 {
-
     using System;
+
+    using Models.Contracts;
 
     public class Transaction : ITransaction
     {
@@ -34,12 +35,12 @@
             }
         }
 
-        public TransactionStatus Status { get; private set; }
+        public TransactionStatus Status { get; set; }
 
         public string From
         {
             get => this.from;
-            private set
+            set
             {
                 if (string.IsNullOrEmpty(value))
                 {
@@ -53,7 +54,7 @@
         public string To
         {
             get => this.to;
-            private set
+            set
             {
                 if (string.IsNullOrEmpty(value))
                 {
@@ -67,7 +68,7 @@
         public decimal Amount
         {
             get => this.amount;
-            private set
+            set
             {
                 if (value < 0)
                 {

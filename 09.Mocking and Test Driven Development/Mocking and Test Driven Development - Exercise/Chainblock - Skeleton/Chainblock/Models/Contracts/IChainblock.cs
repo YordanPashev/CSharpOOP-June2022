@@ -1,5 +1,6 @@
-﻿namespace Chainblock.Contracts
+﻿namespace Chainblock.Models.Contracts
 {
+
     using System.Collections.Generic;
 
     public interface IChainblock : IEnumerable<ITransaction>

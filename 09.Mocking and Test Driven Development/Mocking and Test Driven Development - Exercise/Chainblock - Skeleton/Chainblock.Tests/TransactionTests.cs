@@ -1,10 +1,12 @@
 ﻿namespace Chainblock.Tests
 {
+
+    using System;
+
     using NUnit.Framework;
 
-    using Chainblock.Contracts;
-    using Chainblock.Contracts.Models;
-    using System;
+    using Chainblock.Models;
+    using Chainblock.Models.Contracts;
 
     [TestFixture]
     public class TransactionTests
