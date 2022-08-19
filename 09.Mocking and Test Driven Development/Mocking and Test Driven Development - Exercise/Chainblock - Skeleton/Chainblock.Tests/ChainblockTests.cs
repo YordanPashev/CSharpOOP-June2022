@@ -250,6 +250,7 @@
                 "Must throw error because there is no transaction with the given Id in the Chainblock");
         }
 
+        
         [TestCase(1, TransactionStatus.Failed, "Gancho", "Lelq Ginche", 22.50, 
                   55123, "Bacho Kolio", "Nencho Ivan", 6)]
         [TestCase(11234, TransactionStatus.Successfull, "Penka", "Lelq Ginche", 22.50,
