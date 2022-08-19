@@ -528,6 +528,7 @@
                 "Must throw error because there is no transaction with the given paramas in the Chainblock.");
         }
 
+        
         [TestCase(33, TransactionStatus.Successfull, "Lelq Ginche", "Malyk Gancho", 52.31,
                  1, "Lelq Ginche", "Minka", 1212.30)]
         [TestCase(1231311, TransactionStatus.Successfull, "Lelq Ginche", "Muncho", 723.44,
