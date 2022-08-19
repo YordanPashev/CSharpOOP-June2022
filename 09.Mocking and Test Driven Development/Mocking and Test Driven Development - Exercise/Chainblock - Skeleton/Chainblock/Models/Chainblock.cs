@@ -192,11 +192,6 @@
             return orderedTransaction;
         }
 
-        public IEnumerator<ITransaction> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
         public void RemoveTransactionById(int id)
         {
             ITransaction transaction = this.transactions.FirstOrDefault(t => t.Id == id);
@@ -208,9 +203,14 @@
             this.transactions.Remove(transaction);
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        public IEnumerator<ITransaction> GetEnumerator()
         {
-            throw new NotImplementedException();
+            foreach (ITransaction transaction in this.transactions)
+            {
+                yield return transaction; 
+            }
         }
+        
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
     }
 }
