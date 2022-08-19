@@ -636,5 +636,43 @@
             Assert.Throws<InvalidOperationException>(() => chainblock.GetAllInAmountRange(1.30, 2000),
                 "Must throw error because there is no transaction within the given range in the Chainblock.");
         }
+        
+        
+        [TestCase(33, TransactionStatus.Successfull, "Lelq Ginche", "Malyk Gancho", 5223323.31,
+               1, "Bulq Ivana", "Malyk Gancho", 1212.30)]
+        [TestCase(1231311, TransactionStatus.Successfull, "Lelq Ginche", "Malyk Gancho", 7231123.44,
+               4, "Kyncho", "Malyk Gancho", 723.44)]
+        public void Test_Chainblock_It_Should_Be_Iterable
+        (int idOne, TransactionStatus status, string fromOne, string toOne, decimal amountOne,
+        int idTwo, string fromTwo, string toTwo, decimal amountTwo)
+        {
+            ITransaction transactionOne = new Transaction(idOne, status, fromOne, toOne, amountOne);
+            ITransaction transactionTwo = new Transaction(idTwo, status, fromTwo, toTwo, amountTwo);
+            ITransaction transactionThree = new Transaction(412, TransactionStatus.Successfull, "Shureq Acho", "Petko Bratovcheda", 1.10m);
+            ITransaction transactionFour = new Transaction(23, TransactionStatus.Aborted, "Shureq Acho", "Baba Penka", 11.15m);
+
+            chainblock.Add(transactionOne);
+            chainblock.Add(transactionTwo);
+            chainblock.Add(transactionThree);
+            chainblock.Add(transactionFour);
+
+            List<ITransaction> expectedResult = new List<ITransaction>
+            {
+                transactionOne,
+                transactionTwo,
+                transactionThree,
+                transactionFour
+            };
+
+            List<ITransaction> actualResult = new List<ITransaction>();
+
+            foreach (ITransaction transaction in chainblock)
+            {
+                actualResult.Add(transaction);
+            }
+
+            CollectionAssert.AreEqual(actualResult, expectedResult,
+                "The method does not return right transactions.");
+        }
     }
 }
