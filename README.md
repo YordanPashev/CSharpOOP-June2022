@@ -14,7 +14,7 @@
 
 [**7. Reflection and Attributes**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/07.Reflection%20and%20Attributes)
 
-[**8. Unit Testing**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/08.UnitTesting)
+[**8. Unit Testing**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/08.Unit%20Testing)
 
 [**9. Mocking and Test Driven Development**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/09.Mocking%20and%20Test%20Driven%20Development)
 
