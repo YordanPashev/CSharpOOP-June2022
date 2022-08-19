@@ -70,7 +70,6 @@
         [TestCase(55123, TransactionStatus.Unauthorized, "Bacho Kolio", "Pavkata", 6)]
         public void Test_ContainsTransaction_Method_Must_False
             (int id, TransactionStatus status, string from, string to, decimal amount)
-
         {
             ITransaction transaction = new Transaction(id, status, from, to, amount);
             bool expectedResult = false;
@@ -86,7 +85,6 @@
         [TestCase(55123, TransactionStatus.Unauthorized, "Bacho Kolio", "Nencho Ivan", 6)]
         public void Test_ContainsTransaction_Method_Must_True
             (int id, TransactionStatus status, string from, string to, decimal amount)
-
         {
             ITransaction transaction = new Transaction(id, status, from, to, amount);
             chainblock.Add(transaction);
@@ -104,7 +102,6 @@
         [TestCase(55123, TransactionStatus.Unauthorized, "Bacho Kolio", "Nencho Ivan", 6)]
         public void Test_Add_Method_Must_Add_New_Transaction_To_The_Colletion
             (int id, TransactionStatus status, string from, string to, decimal amount)
-
         {
             ITransaction transaction = new Transaction(id, status, from, to, amount);
             int expectedRCount = 1;
@@ -134,7 +131,6 @@
         [TestCase(55123, TransactionStatus.Unauthorized, "Bacho Kolio", "Pavkata", 6)]
         public void Test_ContainsId_Method_Must_False
             (int id, TransactionStatus status, string from, string to, decimal amount)
-
         {
             ITransaction transaction = new Transaction(id, status, from, to, amount);
             bool expectedResult = false;
@@ -150,7 +146,6 @@
         [TestCase(55123, TransactionStatus.Unauthorized, "Bacho Kolio", "Nencho Ivan", 6)]
         public void Test_ContainsId_Method_Must_True
             (int id, TransactionStatus status, string from, string to, decimal amount)
-
         {
             ITransaction transaction = new Transaction(id, status, from, to, amount);
             chainblock.Add(transaction);
@@ -168,7 +163,6 @@
         [TestCase(55123, TransactionStatus.Unauthorized, "Bacho Kolio", "Nencho Ivan", 6)]
         public void Test_GetById_Method_Reutn_Chosen_Transation
            (int id, TransactionStatus status, string from, string to, decimal amount)
-
         {
             ITransaction transaction = new Transaction(id, status, from, to, amount);
             ITransaction expectedResult = transaction;
@@ -196,7 +190,6 @@
         [TestCase(55123, TransactionStatus.Aborted, "Bacho Kolio", "Nencho Ivan", 6)]
         public void Test_ChangeTransactionStatus_Method_Must_Change_The_Status_Of_The_Chosen_Transaction
             (int id, TransactionStatus status, string from, string to, decimal amount)
-
         {
             Transaction transaction = new Transaction(id, status, from, to, amount);
             chainblock.Add(transaction);
@@ -264,7 +257,6 @@
         public void Test_GetByTransactionStatus_Method_Must_Return_Chosen_transaction
             (int idOne, TransactionStatus status, string fromOne, string toOne, decimal amountOne,
             int idTwo, string fromTwo, string toTwo, decimal amountTwo)
-
         {
             ITransaction transactionOne = new Transaction(idOne, status, fromOne, toOne, amountOne);
             ITransaction transactionTwo = new Transaction(idTwo, status, fromTwo, toTwo, amountTwo);
@@ -301,7 +293,6 @@
         public void Test_GetAllSendersWithTransactionStatus_Method_Must_Return_List_Of_Senders
             (int idOne, TransactionStatus status, string fromOne, string toOne, decimal amountOne,
             int idTwo, string fromTwo, string toTwo, decimal amountTwo)
-
         {
             ITransaction transactionOne = new Transaction(idOne, status, fromOne, toOne, amountOne);
             ITransaction transactionTwo = new Transaction(idTwo, status, fromTwo, toTwo, amountTwo);
@@ -343,7 +334,6 @@
         public void Test_GetAllReceiversWithTransactionStatus_Method_Must_Return_List_Of_Receivers
            (int idOne, TransactionStatus status, string fromOne, string toOne, decimal amountOne,
            int idTwo, string fromTwo, string toTwo, decimal amountTwo)
-
         {
             ITransaction transactionOne = new Transaction(idOne, status, fromOne, toOne, amountOne);
             ITransaction transactionTwo = new Transaction(idTwo, status, fromTwo, toTwo, amountTwo);
@@ -385,7 +375,6 @@
         public void Test_GetAllOrderedByAmountDescendingThenById_Method_Must_Return_Transactions
            (int idOne, TransactionStatus status, string fromOne, string toOne, decimal amountOne,
            int idTwo, string fromTwo, string toTwo, decimal amountTwo)
-
         {
             int idThree = 4123123;
             ITransaction transactionOne = new Transaction(idOne, status, fromOne, toOne, amountOne);
@@ -427,7 +416,6 @@
         public void Test_GetBySenderOrderedByAmountDescending_Method_Must_Return_List_Of_Senders
           (int idOne, TransactionStatus status, string fromOne, string toOne, decimal amountOne,
           int idTwo, string fromTwo, string toTwo, decimal amountTwo)
-
         {
             int idThree = 4123123;
             ITransaction transactionOne = new Transaction(idOne, status, fromOne, toOne, amountOne);
@@ -467,7 +455,6 @@
         public void Test_GetByReceiverOrderedByAmountThenById_Method_Must_Return_List_Of_Senders
           (int idOne, TransactionStatus status, string fromOne, string toOne, decimal amountOne,
           int idTwo, string fromTwo, string toTwo, decimal amountTwo)
-
         {
             int idThree = 412;
             ITransaction transactionOne = new Transaction(idOne, status, fromOne, toOne, amountOne);
@@ -507,7 +494,6 @@
         public void Test_GetByTransactionStatusAndMaximumAmount_Method_Must_Return_List_Of_Transactions
           (int idOne, TransactionStatus status, string fromOne, string toOne, decimal amountOne,
           int idTwo, string fromTwo, string toTwo, decimal amountTwo)
-
         {
             int idThree = 412;
             ITransaction transactionOne = new Transaction(idOne, status, fromOne, toOne, amountOne);
@@ -548,7 +534,6 @@
         public void Test_GetBySenderAndMinimumAmountDescending_Method_Must_Return_List_Of_Transactions
           (int idOne, TransactionStatus status, string fromOne, string toOne, decimal amountOne,
           int idTwo, string fromTwo, string toTwo, decimal amountTwo)
-
         {
             ITransaction transactionOne = new Transaction(idOne, status, fromOne, toOne, amountOne);
             ITransaction transactionTwo = new Transaction(idTwo, status, fromTwo, toTwo, amountTwo);
@@ -589,7 +574,6 @@
         public void Test_GetByReceiverAndAmountRange_Method_Must_Return_List_Of_Transactions
          (int idOne, TransactionStatus status, string fromOne, string toOne, decimal amountOne,
          int idTwo, string fromTwo, string toTwo, decimal amountTwo)
-
         {
             ITransaction transactionOne = new Transaction(idOne, status, fromOne, toOne, amountOne);
             ITransaction transactionTwo = new Transaction(idTwo, status, fromTwo, toTwo, amountTwo);
@@ -629,7 +613,6 @@
         public void Test_GetAllInAmountRange_Method_Must_Return_List_Of_Transactions
          (int idOne, TransactionStatus status, string fromOne, string toOne, decimal amountOne,
          int idTwo, string fromTwo, string toTwo, decimal amountTwo)
-
         {
             ITransaction transactionOne = new Transaction(idOne, status, fromOne, toOne, amountOne);
             ITransaction transactionTwo = new Transaction(idTwo, status, fromTwo, toTwo, amountTwo);
