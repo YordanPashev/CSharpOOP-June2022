@@ -155,7 +155,6 @@
 
             Assert.That(actualResult == expectedResult,
                   "Must return true becasue the transaction does exist in the collection");
-
         }
 
 
@@ -250,8 +249,8 @@
                 "Must throw error because there is no transaction with the given Id in the Chainblock");
         }
 
-        
-        [TestCase(1, TransactionStatus.Failed, "Gancho", "Lelq Ginche", 22.50, 
+
+        [TestCase(1, TransactionStatus.Failed, "Gancho", "Lelq Ginche", 22.50,
                   55123, "Bacho Kolio", "Nencho Ivan", 6)]
         [TestCase(11234, TransactionStatus.Successfull, "Penka", "Lelq Ginche", 22.50,
                   543, "Bacho Kolio", "Bako Ivan", 6)]
@@ -265,16 +264,15 @@
             chainblock.Add(transactionOne);
             chainblock.Add(transactionTwo);
 
-            int expectedTransCount = 2;
-            decimal expectedAmountFirstTrans = amountOne;
-            decimal expectedAmountSecondTrans = amountTwo;
+            List<ITransaction> expectedResult = new List<ITransaction>
+            {
+                transactionOne,
+                transactionTwo
+            };
 
-            List<ITransaction> resultTransactions = chainblock.GetByTransactionStatus(status).ToList();
+            List<ITransaction> actualResult = chainblock.GetByTransactionStatus(status).ToList();
 
-            Assert.AreEqual(resultTransactions.Count(), expectedTransCount,
-                $"There must be {expectedTransCount} elements in the result collection");
-            Assert.That(resultTransactions[0].Amount == expectedAmountFirstTrans && 
-                        resultTransactions[1].Amount == expectedAmountSecondTrans,
+            CollectionAssert.AreEqual(actualResult, expectedResult,
                 "The collection does not cointains the seeking transactions.");
         }
 
@@ -303,16 +301,15 @@
             chainblock.Add(transactionTwo);
             chainblock.Add(transactionThree);
 
-            int expectedTransCount = 2;
-            string expectedAmountFirstTSender = fromOne;
-            string expectedAmountSecondSender = fromTwo;
+            List<string> expectedResult = new List<string>
+            {
+                transactionOne.From,
+                transactionTwo.From
+            };
 
-            List<string> listOfSenders = chainblock.GetAllSendersWithTransactionStatus(status).ToList();
+            List<string> actualResult = chainblock.GetAllSendersWithTransactionStatus(status).ToList();
 
-            Assert.AreEqual(listOfSenders.Count(), expectedTransCount,
-                $"There must be {expectedTransCount} transaction in the result collection");
-            Assert.That(listOfSenders[0] == expectedAmountFirstTSender &&
-                        listOfSenders[1] == expectedAmountSecondSender,
+            CollectionAssert.AreEqual(actualResult, expectedResult,
                 "The collection does not cointains the seeking transactions.");
         }
 
@@ -320,7 +317,7 @@
         [Test]
         public void Test_GetAllSendersWithTransactionStatus_Method_Must_Throw_Error()
         {
-            ITransaction transaction= new Transaction(4123123, TransactionStatus.Successfull, "Pepa", "Dimitrihcko", 0.15m);
+            ITransaction transaction = new Transaction(4123123, TransactionStatus.Successfull, "Pepa", "Dimitrihcko", 0.15m);
             chainblock.Add(transaction);
 
             Assert.Throws<InvalidOperationException>(() => chainblock.GetAllSendersWithTransactionStatus(TransactionStatus.Failed),
@@ -344,16 +341,15 @@
             chainblock.Add(transactionTwo);
             chainblock.Add(transactionThree);
 
-            int expectedTransCount = 2;
-            string expectedAmountFirstTSender = toOne;
-            string expectedAmountSecondSender = toTwo;
+            List<string> expectedResult = new List<string>
+            {
+                transactionOne.To,
+                transactionTwo.To
+            };
 
-            List<string> listOfSenders = chainblock.GetAllReceiversWithTransactionStatus(status).ToList();
+            List<string> actualResult = chainblock.GetAllReceiversWithTransactionStatus(status).ToList();
 
-            Assert.AreEqual(listOfSenders.Count(), expectedTransCount,
-                $"There must be {expectedTransCount} transaction in the result collection");
-            Assert.That(listOfSenders[0] == expectedAmountFirstTSender &&
-                        listOfSenders[1] == expectedAmountSecondSender,
+            CollectionAssert.AreEqual(actualResult, expectedResult,
                 "The collection does not cointains the seeking transactions.");
         }
 
@@ -386,18 +382,16 @@
             chainblock.Add(transactionTwo);
             chainblock.Add(transactionThree);
 
-            int expectedTransCount = 3;
-            int expectedAmountFirstTSender = idThree;
-            int expectedAmountSecondTSender = idOne;
-            int expectedAmountThirdSender = idTwo;
+            List<ITransaction> expectedResult = new List<ITransaction>
+            {
+                transactionThree,
+                transactionOne,
+                transactionTwo
+            };
 
-            List<ITransaction> orderedTransactions = chainblock.GetAllOrderedByAmountDescendingThenById().ToList();
+            List<ITransaction> actualResult = chainblock.GetAllOrderedByAmountDescendingThenById().ToList();
 
-            Assert.AreEqual(orderedTransactions.Count(), expectedTransCount,
-                $"There must be {expectedTransCount} transaction it the result collection");
-            Assert.That(orderedTransactions[0].Id == expectedAmountFirstTSender &&
-                        orderedTransactions[1].Id == expectedAmountSecondTSender &&
-                        orderedTransactions[2].Id == expectedAmountThirdSender,
+            CollectionAssert.AreEqual(actualResult, expectedResult,
                 "The method does not return right values.");
         }
 
@@ -427,17 +421,16 @@
             chainblock.Add(transactionTwo);
             chainblock.Add(transactionThree);
 
-            int expectedTransCount = 2;
-            int expectedAmountFirstTSender = idOne;
-            int expectedAmountSecondTSender = idTwo;
+            List<ITransaction> expectedResult = new List<ITransaction>
+            {
+                transactionOne,
+                transactionTwo
+            };
 
-            List<ITransaction> orderedTransactionsBySender = chainblock.GetBySenderOrderedByAmountDescending("Lelq Ginche").ToList();
+            List<ITransaction> actualResult = chainblock.GetBySenderOrderedByAmountDescending("Lelq Ginche").ToList();
 
-            Assert.AreEqual(orderedTransactionsBySender.Count(), expectedTransCount,
-                $"There must be {expectedTransCount} transaction it the result collection");
-            Assert.That(orderedTransactionsBySender[0].Id == expectedAmountFirstTSender &&
-                        orderedTransactionsBySender[1].Id == expectedAmountSecondTSender,
-                "The method does not return right transactions.");
+            CollectionAssert.AreEqual(actualResult, expectedResult,
+                 "The method does not return right transactions.");
         }
 
 
@@ -466,16 +459,15 @@
             chainblock.Add(transactionTwo);
             chainblock.Add(transactionThree);
 
-            int expectedTransCount = 2;
-            int expectedAmountFirstTSender = idTwo;
-            int expectedAmountSecondTSender = idOne;
+            List<ITransaction> expectedResult = new List<ITransaction>
+            {
+                transactionTwo,
+                transactionOne
+            };
 
-            List<ITransaction> orderedTransactionsBySender = chainblock.GetByReceiverOrderedByAmountThenById("Malyk Gancho").ToList();
+            List<ITransaction> actualResult = chainblock.GetByReceiverOrderedByAmountThenById("Malyk Gancho").ToList();
 
-            Assert.AreEqual(orderedTransactionsBySender.Count(), expectedTransCount,
-                $"There must be {expectedTransCount} transaction it the result collection");
-            Assert.That(orderedTransactionsBySender[0].Id == expectedAmountFirstTSender &&
-                        orderedTransactionsBySender[1].Id == expectedAmountSecondTSender,
+            CollectionAssert.AreEqual(actualResult, expectedResult,
                 "The method does not return right transactions.");
         }
 
@@ -507,16 +499,15 @@
             chainblock.Add(transactionThree);
             chainblock.Add(transactionFour);
 
-            int expectedTransCount = 2;
-            int expectedAmountFirstTSender = idOne;
-            int expectedAmountSecondTSender = idTwo;
+            List<ITransaction> expectedResult = new List<ITransaction>
+            {
+                transactionOne,
+                transactionTwo
+            };
 
-            List<ITransaction> orderedTransactionsBySender = chainblock.GetByTransactionStatusAndMaximumAmount(TransactionStatus.Successfull, 52.30).ToList();
+            List<ITransaction> actualResult = chainblock.GetByTransactionStatusAndMaximumAmount(TransactionStatus.Successfull, 52.30).ToList();
 
-            Assert.AreEqual(orderedTransactionsBySender.Count(), expectedTransCount,
-                $"There must be {expectedTransCount} transaction it the result collection");
-            Assert.That(orderedTransactionsBySender[0].Id == expectedAmountFirstTSender &&
-                        orderedTransactionsBySender[1].Id == expectedAmountSecondTSender,
+            CollectionAssert.AreEqual(actualResult, expectedResult,
                 "The method does not return right transactions.");
         }
 
@@ -528,7 +519,7 @@
                 "Must throw error because there is no transaction with the given paramas in the Chainblock.");
         }
 
-        
+
         [TestCase(33, TransactionStatus.Successfull, "Lelq Ginche", "Malyk Gancho", 52.31,
                  1, "Lelq Ginche", "Minka", 1212.30)]
         [TestCase(1231311, TransactionStatus.Successfull, "Lelq Ginche", "Muncho", 723.44,
@@ -547,16 +538,15 @@
             chainblock.Add(transactionThree);
             chainblock.Add(transactionFour);
 
-            int expectedTransCount = 2;
-            int expectedAmountFirstTSender = idTwo;
-            int expectedAmountSecondTSender = idOne;
+            List<ITransaction> expectedResult = new List<ITransaction>
+            {
+                transactionTwo,
+                transactionOne
+            };
 
-            List<ITransaction> orderedTransactionsBySender = chainblock.GetBySenderAndMinimumAmountDescending("Lelq Ginche", 52.30).ToList();
+            List<ITransaction> actualResult = chainblock.GetBySenderAndMinimumAmountDescending("Lelq Ginche", 52.30).ToList();
 
-            Assert.AreEqual(orderedTransactionsBySender.Count(), expectedTransCount,
-                $"There must be {expectedTransCount} transaction it the result collection");
-            Assert.That(orderedTransactionsBySender[0].Id == expectedAmountFirstTSender &&
-                        orderedTransactionsBySender[1].Id == expectedAmountSecondTSender,
+            CollectionAssert.AreEqual(actualResult, expectedResult,
                 "The method does not return right transactions.");
         }
 
@@ -587,16 +577,15 @@
             chainblock.Add(transactionThree);
             chainblock.Add(transactionFour);
 
-            int expectedTransCount = 2;
-            int expectedAmountFirstTSender = idTwo;
-            int expectedAmountSecondTSender = idOne;
+            List<ITransaction> expectedResult = new List<ITransaction>
+            {
+                transactionTwo,
+                transactionOne
+            };
 
-            List<ITransaction> orderedTransactionsBySender = chainblock.GetByReceiverAndAmountRange("Malyk Gancho", 52.30, 6000).ToList();
+            List<ITransaction> actualResult = chainblock.GetByReceiverAndAmountRange("Malyk Gancho", 52.30, 6000).ToList();
 
-            Assert.AreEqual(orderedTransactionsBySender.Count(), expectedTransCount,
-                $"There must be {expectedTransCount} transaction it the result collection");
-            Assert.That(orderedTransactionsBySender[0].Id == expectedAmountFirstTSender &&
-                        orderedTransactionsBySender[1].Id == expectedAmountSecondTSender,
+            CollectionAssert.AreEqual(actualResult, expectedResult,
                 "The method does not return right transactions.");
         }
 
@@ -608,7 +597,7 @@
                 "Must throw error because there is no transaction with the given paramas in the Chainblock.");
         }
 
-        
+
         [TestCase(33, TransactionStatus.Successfull, "Lelq Ginche", "Malyk Gancho", 5223323.31,
                 1, "Bulq Ivana", "Malyk Gancho", 1212.30)]
         [TestCase(1231311, TransactionStatus.Successfull, "Lelq Ginche", "Malyk Gancho", 7231123.44,
@@ -627,18 +616,16 @@
             chainblock.Add(transactionThree);
             chainblock.Add(transactionFour);
 
-            int expectedTransCount = 3;
-            int expectedAmountSecondTSender = transactionTwo.Id;
-            int expectedAmountThirdTSender = transactionThree.Id;
-            int expectedAmountFourthTSender = transactionFour.Id;
+            List<ITransaction> expectedResult = new List<ITransaction>
+            {
+                transactionTwo,
+                transactionThree,
+                transactionFour
+            };
 
-            List<ITransaction> orderedTransactionsBySender = chainblock.GetAllInAmountRange(1.09, 6000).ToList();
+            List<ITransaction> actualResult = chainblock.GetAllInAmountRange(1.09, 6000).ToList();
 
-            Assert.AreEqual(orderedTransactionsBySender.Count(), expectedTransCount,
-                $"There must be {expectedTransCount} transaction it the result collection");
-            Assert.That(orderedTransactionsBySender[0].Id == expectedAmountSecondTSender &&
-                        orderedTransactionsBySender[1].Id == expectedAmountThirdTSender &&
-                        orderedTransactionsBySender[2].Id == expectedAmountFourthTSender,
+            CollectionAssert.AreEqual(actualResult, expectedResult,
                 "The method does not return right transactions.");
         }
 
