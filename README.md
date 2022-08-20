@@ -18,9 +18,11 @@
 
 [**9. Mocking and Test Driven Development**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/09.Mocking%20and%20Test%20Driven%20Development)
 
-[**10. Exam Preparation**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/11.Exam%20Preparation)
+[**10. Design Patterns**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/10.Design%20Patterns)
 
-[**11. Exam - 14 Aug 2022**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/12.Exam%20-%2014%20Aug%202022)
+[**11. Exam Preparation**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/11.Exam%20Preparation)
+
+[**12. Exam - 14 Aug 2022**](https://github.com/YordanPashev/CSharpOOP-June2022/tree/main/12.Exam%20-%2014%20Aug%202022)
 
 
 
