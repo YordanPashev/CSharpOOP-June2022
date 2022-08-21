@@ -36,7 +36,8 @@
         public override string ToString()
         {
             StringBuilder result = new StringBuilder();
-            result.AppendLine($"Basket: {this.Name} | Price: {this.Price:F2} with product:");
+           //result.AppendLine(base.ToString());
+            result.AppendLine($"Basket: {this.Name} | Price: {this.Price:F2} with product {this.gifts.Count} products");
 
             foreach (GiftBase gift in Gifts)
             {
